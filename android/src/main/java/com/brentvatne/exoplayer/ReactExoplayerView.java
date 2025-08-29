@@ -752,12 +752,10 @@ public class ReactExoplayerView extends FrameLayout implements
                 .build();
 
         player.addAnalyticsListener(new AnalyticsListener() {
-            @Override
             public void onDecoderInitialized(EventTime eventTime, int trackType, String decoderName, long initDurationMs) {
                 Log.d("ExoPlayerDecoder", "TrackType: " + trackType + " Decoder: " + decoderName);
             }
 
-            @Override
             public void onTracksChanged(EventTime eventTime, TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
                 Log.d("ExoPlayerTracks", "Tracks changed: " + trackGroups.length);
             }
