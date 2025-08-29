@@ -224,6 +224,8 @@ dependencies {
     // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"
+// 				implementation 'androidx.media3:media3-exoplayer-ffmpeg:1.0.0'
+				implementation 'androidx.media3:media3-decode-ffmpeg:1.2.0'
 
     implementation "androidx.core:core-ktx:$androidxCore_version"
     implementation "androidx.activity:activity-ktx:$androidxActivity_version"
