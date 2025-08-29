@@ -104,6 +104,13 @@ import androidx.media3.extractor.metadata.id3.Id3Frame;
 import androidx.media3.extractor.metadata.id3.TextInformationFrame;
 import androidx.media3.session.MediaSessionService;
 
+import android.util.Log;
+
+import androidx.media3.exoplayer.analytics.AnalyticsListener;
+import androidx.media3.exoplayer.analytics.AnalyticsListener.EventTime;
+import androidx.media3.exoplayer.trackselection.TrackSelectionArray;
+import androidx.media3.exoplayer.source.TrackGroupArray;
+
 import com.brentvatne.common.api.AdsProps;
 import com.brentvatne.common.api.BufferConfig;
 import com.brentvatne.common.api.BufferingStrategy;
