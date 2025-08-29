@@ -727,8 +727,8 @@ public class ReactExoplayerView extends FrameLayout implements
         DefaultRenderersFactory renderersFactory =
                 new DefaultRenderersFactory(getContext())
                         .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
-                        .setEnableDecoderFallback(true)
-                        .forceEnableMediaCodecAsynchronousQueueing();
+                        .setEnableDecoderFallback(true);
+//                         .forceEnableMediaCodecAsynchronousQueueing();
 
         DefaultMediaSourceFactory mediaSourceFactory = new DefaultMediaSourceFactory(mediaDataSourceFactory);
         if (useCache && !disableCache) {
@@ -743,6 +743,19 @@ public class ReactExoplayerView extends FrameLayout implements
                 .setLoadControl(loadControl)
                 .setMediaSourceFactory(mediaSourceFactory)
                 .build();
+
+        player.addAnalyticsListener(new AnalyticsListener() {
+            @Override
+            public void onDecoderInitialized(EventTime eventTime, int trackType, String decoderName, long initDurationMs) {
+                Log.d("ExoPlayerDecoder", "TrackType: " + trackType + " Decoder: " + decoderName);
+            }
+
+            @Override
+            public void onTracksChanged(EventTime eventTime, TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+                Log.d("ExoPlayerTracks", "Tracks changed: " + trackGroups.length);
+            }
+        });
+
         ReactNativeVideoManager.Companion.getInstance().onInstanceCreated(instanceId, player);
         refreshDebugState();
         player.addListener(self);
